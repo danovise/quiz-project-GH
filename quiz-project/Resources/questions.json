@@ -1,0 +1,214 @@
+{
+    "items":[
+        {
+            "text":"Как называется столица американского штата Калифорния?",
+            "image":"Картинка вопроса 1",
+            "answers":[
+                {
+                    "text":"Сан-Диего",
+                    "isCorrect":false,
+                    "isSelected":false
+                },
+                {
+                    "text":"Чикаго",
+                    "isCorrect":false,
+                    "isSelected":false
+                },
+                {
+                    "text":"Сакраменто",
+                    "isCorrect":true,
+                    "isSelected":false
+                }
+            ]
+        },
+        {
+            "text":"Как называются четыре факультета Хогвартса?",
+            "image":"Картинка вопроса 2",
+            "answers":[
+                {
+                    "text":"Красный, синий, зеленый и оранжевый",
+                    "isCorrect":false,
+                    "isSelected":false
+                },
+                {
+                    "text":"Гриффиндор, Пуффендуй, Когтевран, Слизерин",
+                    "isCorrect":true,
+                    "isSelected":false
+                },
+                {
+                    "text":"Грифон, Ворон, Слон и Змея",
+                    "isCorrect":false,
+                    "isSelected":false
+                }
+            ]
+        },
+        {
+            "text":"Какой безалкогольный напиток первым был взят в космос?",
+            "image":"Картинка вопроса 3",
+            "answers":[
+                {
+                    "text":"Пепси",
+                    "isCorrect":false,
+                    "isSelected":false
+                },
+                {
+                    "text":"Кока-кола",
+                    "isCorrect":true,
+                    "isSelected":false
+                },
+                {
+                    "text":"Фанта",
+                    "isCorrect":false,
+                    "isSelected":false
+                }
+            ]
+        },
+        {
+            "text":"Сколько длится мгновение?",
+            "image":"Картинка вопроса 4",
+            "answers":[
+                {
+                    "text":"90 секунд",
+                    "isCorrect":true,
+                    "isSelected":false
+                },
+                {
+                    "text":"60 секунд",
+                    "isCorrect":false,
+                    "isSelected":false
+                },
+                {
+                    "text":"180 секунд",
+                    "isCorrect":false,
+                    "isSelected":false
+                }
+            ]
+        },
+        {
+            "text":"Какая служба электронной почты принадлежит компании Microsoft?",
+            "image":"Картинка вопроса 5",
+            "answers":[
+                {
+                    "text":"Outlook",
+                    "isCorrect":true,
+                    "isSelected":false
+                },
+                {
+                    "text":"Gmail",
+                    "isCorrect":false,
+                    "isSelected":false
+                },
+                {
+                    "text":"iCloud Mail",
+                    "isCorrect":false,
+                    "isSelected":false
+                }
+            ]
+        },
+        {
+            "text":"Какого цвета была таблетка, которую принимает Нео в фильме “Матрица”?",
+            "image":"Картинка вопроса 6",
+            "answers":[
+                {
+                    "text":"Синий",
+                    "isCorrect":false,
+                    "isSelected":false
+                },
+                {
+                    "text":"Красный",
+                    "isCorrect":true,
+                    "isSelected":false
+                },
+                {
+                    "text":"Желтый",
+                    "isCorrect":false,
+                    "isSelected":false
+                }
+            ]
+        },
+        {
+            "text":"Каково было первоначальное название Нью-Йорка?",
+            "image":"Картинка вопроса 7",
+            "answers":[
+                {
+                    "text":"Метрополис",
+                    "isCorrect":false,
+                    "isSelected":false
+                },
+                {
+                    "text":"Готэм",
+                    "isCorrect":false,
+                    "isSelected":false
+                },
+                {
+                    "text":"Новый Амстердам",
+                    "isCorrect":true,
+                    "isSelected":false
+                }
+            ]
+        },
+        {
+            "text":"Какой город является столицей Австралии?",
+            "image":"Картинка вопроса 8",
+            "answers":[
+                {
+                    "text":"Канберра",
+                    "isCorrect":true,
+                    "isSelected":false
+                },
+                {
+                    "text":"Сидней",
+                    "isCorrect":false,
+                    "isSelected":false
+                },
+                {
+                    "text":"Мельбурн",
+                    "isCorrect":false,
+                    "isSelected":false
+                }
+            ]
+        },
+        {
+            "text":"Какой автор написал книги «Игра престолов»?",
+            "image":"Картинка вопроса 9",
+            "answers":[
+                {
+                    "text":"Дж. К. Роулинг",
+                    "isCorrect":false,
+                    "isSelected":false
+                },
+                {
+                    "text":"Дж. Р. Р. Толкиен",
+                    "isCorrect":false,
+                    "isSelected":false
+                },
+                {
+                    "text":"Джордж Р. Р. Мартин",
+                    "isCorrect":true,
+                    "isSelected":false
+                }
+            ]
+        },
+        {
+            "text":"Какое популярное морское существо обладает способностью клонировать себя?",
+            "image":"Картинка вопроса 10",
+            "answers":[
+                {
+                    "text":"Медуза",
+                    "isCorrect":true,
+                    "isSelected":false
+                },
+                {
+                    "text":"Осьминог",
+                    "isCorrect":false,
+                    "isSelected":false
+                },
+                {
+                    "text":"Кальмар",
+                    "isCorrect":false,
+                    "isSelected":false
+                }
+            ]
+        }
+    ]
+}
