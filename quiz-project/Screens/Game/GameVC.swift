@@ -14,10 +14,10 @@ enum QuestionSectionType: Int, CaseIterable {
     case button
 }
 
-//enum QuestionType {
-//    case text
-//    case image
-//}
+enum QuestionType: Int, CaseIterable {
+    case text
+    case image
+}
 
 class GameVC: UIViewController {
     
@@ -33,12 +33,13 @@ class GameVC: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-        tableView.separatorStyle = .none  // убираем полоски на экране
-        tableView.tableHeaderView = headerLabel
+        tableView.separatorStyle = .none
         
         tableView.register(QuestionTextCell.self, forCellReuseIdentifier: QuestionTextCell.reuseId)
         tableView.register(AnswerCell.self, forCellReuseIdentifier: AnswerCell.reuseId)
         tableView.register(CheckButtonCell.self, forCellReuseIdentifier: CheckButtonCell.reuseId)
+        
+        tableView.tableHeaderView = headerLabel
         
         return tableView
     }()
@@ -50,7 +51,6 @@ class GameVC: UIViewController {
         label.text = "Question 1/10"
         return label
     }()
-    
     
     //MARK: - Lifecycle
     
@@ -70,18 +70,21 @@ class GameVC: UIViewController {
         setupConstraints()
         
         fetchLocalQuestions()
+        
     }
     
     //MARK: - Request
     private func fetchLocalQuestions() {
         questions = jsonService.loadJson(filename: "questions") ?? []
         currentQuestion = questions.randomElement()
+        
         tableView.reloadData()
     }
     
     //MARK: - Private
     private func setupViews() {
         view.addSubview(tableView)
+        view.backgroundColor = .red
     }
     
     private func setupConstraints() {
@@ -119,6 +122,8 @@ extension GameVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        let fullQuestion = questions[indexPath.section]
+        
         if let sectionType = QuestionSectionType.init(rawValue: indexPath.section) {
             
             switch sectionType {
@@ -131,7 +136,9 @@ extension GameVC: UITableViewDataSource {
             case .answer:
                 
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: AnswerCell.reuseId, for: indexPath) as? AnswerCell else { return UITableViewCell() }
+                
                 let answer = currentQuestion?.answers[indexPath.row]
+                
                 cell.configure(answer)
                 
                 return cell
@@ -144,15 +151,25 @@ extension GameVC: UITableViewDataSource {
         }
         return UITableViewCell()
     }
+    
 }
 //MARK: - UITableViewDelegate
 extension GameVC: UITableViewDelegate {
     
-    // func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    //
-    //        //Обнулять если не пришла картинка или не пришел текст вопроса
-    //   }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        let fullQuestion = questions[indexPath.section]
+        
+        if let questionType = QuestionType.init(rawValue: indexPath.row) {
+            switch questionType {
+            case .text:
+                return fullQuestion.text!.isEmpty ? 0 : UITableView.automaticDimension
+            case .image:
+                return fullQuestion.image!.isEmpty ? 0 : UITableView.automaticDimension
+            default: return UITableView.automaticDimension
+            }
+        }
+        return UITableView.automaticDimension
+    }
+    
 }
-
-
-

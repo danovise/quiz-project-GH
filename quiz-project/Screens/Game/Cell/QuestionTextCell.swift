@@ -29,6 +29,14 @@ class QuestionTextCell: UITableViewCell {
         return label
     }()
     
+    private var photoImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.clipsToBounds = true
+   
+        return imageView
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -45,22 +53,37 @@ class QuestionTextCell: UITableViewCell {
     private func setupViews() {
         contentView.addSubview(backgroundCellView)
         contentView.addSubview(titleLabel)
+        contentView.addSubview(photoImageView)
     }
     
     private func setupConstraints() {
         
         backgroundCellView.snp.makeConstraints { make in
-            make.top.left.right.bottom.equalTo(contentView).inset(10)
+            make.top.left.right.bottom.equalTo(contentView).inset(15)
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.top.left.right.bottom.equalTo(backgroundCellView).inset(30)
+            make.top.left.right.equalTo(backgroundCellView).inset(30)
+        }
+        
+        photoImageView.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(20)
+            make.left.right.bottom.equalTo(backgroundCellView).inset(20)
+            
         }
     }
     
     //MARK: - Public
+    
     func configure(_ model: Question?) {
         
         titleLabel.text = model?.text ?? ""
+        
+        let url = NSURL(string: model?.image ?? "")
+        let imagedata = NSData.init(contentsOf: url! as URL)
+        
+        if imagedata != nil {
+            photoImageView.image = UIImage(data:imagedata! as Data)
+        }
     }
 }
