@@ -7,9 +7,17 @@
 
 import UIKit
 
+protocol AnswerCellDelegate: AnyObject {
+    func answerCellSelectAnswer()
+}
+
 class AnswerCell: UITableViewCell {
     
     static var reuseId = "AnswerCell"
+    
+    var currentAnswer: Answer? = nil
+    
+    var delegate: AnswerCellDelegate?
     
     private lazy var answerLabel: UILabel = {
         
@@ -28,6 +36,15 @@ class AnswerCell: UITableViewCell {
         return view
     }()
     
+    private lazy var answerButton: UIButton = {
+        var button = UIButton()
+        button.backgroundColor = .clear
+        
+        button.addTarget(self, action: #selector(answerButtonAction), for: .touchUpInside)
+        
+        return button
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -44,6 +61,7 @@ class AnswerCell: UITableViewCell {
     private func setupViews() {
         contentView.addSubview(backgroundCellView)
         contentView.addSubview(answerLabel)
+        contentView.addSubview(answerButton)
     }
     
     private func setupConstraints() {
@@ -55,12 +73,31 @@ class AnswerCell: UITableViewCell {
         answerLabel.snp.makeConstraints { make in
             make.top.left.right.bottom.equalTo(contentView).inset(20)
         }
+        
+        answerButton.snp.makeConstraints { make in
+            make.top.left.right.bottom.equalToSuperview()
+        }
     }
     
     //MARK: - Public
     
     func configure(_ model: Answer?) {
         
+        currentAnswer = model
+        
         answerLabel.text = model?.text ?? ""
+        
+        if model?.isSelected == true {
+            backgroundCellView.backgroundColor = .blue.withAlphaComponent(0.7)
+        } else {
+            backgroundCellView.backgroundColor = .yellow.withAlphaComponent(0.5)
+        }
+    }
+    //MARK: - Actions
+    
+    @objc func answerButtonAction() {
+        
+        currentAnswer?.isSelected = currentAnswer?.isSelected == false ? true : false
+        delegate?.answerCellSelectAnswer()
     }
 }

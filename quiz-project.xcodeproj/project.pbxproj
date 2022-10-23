@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		840D47042905565100550EBD /* QuestionNumberHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840D47032905565100550EBD /* QuestionNumberHeader.swift */; };
+		840D47062905568400550EBD /* QuestionImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840D47052905568400550EBD /* QuestionImageCell.swift */; };
+		840D4708290556B700550EBD /* QuestionsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840D4707290556B700550EBD /* QuestionsProvider.swift */; };
 		842C34382900008C00BF82D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C34372900008C00BF82D9 /* AppDelegate.swift */; };
 		842C343C2900008C00BF82D9 /* GameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C343B2900008C00BF82D9 /* GameVC.swift */; };
 		842C34412900008D00BF82D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 842C34402900008D00BF82D9 /* Assets.xcassets */; };
@@ -22,6 +25,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		840D47032905565100550EBD /* QuestionNumberHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionNumberHeader.swift; sourceTree = "<group>"; };
+		840D47052905568400550EBD /* QuestionImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionImageCell.swift; sourceTree = "<group>"; };
+		840D4707290556B700550EBD /* QuestionsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsProvider.swift; sourceTree = "<group>"; };
 		842C34342900008C00BF82D9 /* quiz-project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "quiz-project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		842C34372900008C00BF82D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		842C343B2900008C00BF82D9 /* GameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVC.swift; sourceTree = "<group>"; };
@@ -49,6 +55,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		840D47022905563B00550EBD /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				840D47032905565100550EBD /* QuestionNumberHeader.swift */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
 		842C342B2900008C00BF82D9 = {
 			isa = PBXGroup;
 			children = (
@@ -133,7 +147,9 @@
 		842C34592900061E00BF82D9 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				840D47022905563B00550EBD /* Headers */,
 				842C345A2900063E00BF82D9 /* QuestionTextCell.swift */,
+				840D47052905568400550EBD /* QuestionImageCell.swift */,
 				842C345C2900064F00BF82D9 /* AnswerCell.swift */,
 				842C345E2900065D00BF82D9 /* CheckButtonCell.swift */,
 			);
@@ -144,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				842C3463290006FC00BF82D9 /* JsonService.swift */,
+				840D4707290556B700550EBD /* QuestionsProvider.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -226,7 +243,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				842C343C2900008C00BF82D9 /* GameVC.swift in Sources */,
+				840D47062905568400550EBD /* QuestionImageCell.swift in Sources */,
+				840D4708290556B700550EBD /* QuestionsProvider.swift in Sources */,
 				842C34382900008C00BF82D9 /* AppDelegate.swift in Sources */,
+				840D47042905565100550EBD /* QuestionNumberHeader.swift in Sources */,
 				842C345B2900063E00BF82D9 /* QuestionTextCell.swift in Sources */,
 				842C34502900037400BF82D9 /* QuestionsResponse.swift in Sources */,
 				842C345F2900065D00BF82D9 /* CheckButtonCell.swift in Sources */,

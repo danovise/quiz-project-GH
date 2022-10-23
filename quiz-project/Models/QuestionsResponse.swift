@@ -19,7 +19,9 @@ struct Question: Codable {
 }
 
 // MARK: - Answer
-struct Answer: Codable {
+class Answer: Codable {
     let text: String
-    let isCorrect, isSelected: Bool
+    let isCorrect: Bool
+    
+    var isSelected: Bool
 }

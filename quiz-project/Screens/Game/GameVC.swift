@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  GameVC.swift
 //  quiz-project
 //
 //  Created by Daria Sechko on 19.10.22.
@@ -21,41 +21,30 @@ enum QuestionType: Int, CaseIterable {
 
 class GameVC: UIViewController {
     
-    var jsonService: JsonService
+    var questionProvider: QuestionsProvider
     
-    var questions: [Question] = []
-    
-    var currentQuestion: Question? = nil
+    lazy var questionNumberHeader = QuestionNumberHeader(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 100))
     
     private lazy var tableView: UITableView = {
         var tableView = UITableView()
-        
         tableView.dataSource = self
         tableView.delegate = self
-        
         tableView.separatorStyle = .none
         
         tableView.register(QuestionTextCell.self, forCellReuseIdentifier: QuestionTextCell.reuseId)
+        tableView.register(QuestionImageCell.self, forCellReuseIdentifier: QuestionImageCell.reuseId)
         tableView.register(AnswerCell.self, forCellReuseIdentifier: AnswerCell.reuseId)
         tableView.register(CheckButtonCell.self, forCellReuseIdentifier: CheckButtonCell.reuseId)
         
-        tableView.tableHeaderView = headerLabel
+        tableView.tableHeaderView = questionNumberHeader
         
         return tableView
     }()
-    
-    var headerLabel: UILabel = {
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 60))
-        label.font = UIFont.boldSystemFont(ofSize: 20)
-        label.textColor = .gray
-        label.text = "Question 1/10"
-        return label
-    }()
-    
+ 
     //MARK: - Lifecycle
     
-    init(jsonService: JsonService) {
-        self.jsonService = jsonService
+    init(questionProvider: QuestionsProvider) {
+        self.questionProvider = questionProvider
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -75,25 +64,22 @@ class GameVC: UIViewController {
     
     //MARK: - Request
     private func fetchLocalQuestions() {
-        questions = jsonService.loadJson(filename: "questions") ?? []
-        currentQuestion = questions.randomElement()
         
+        questionProvider.fetchAllQuestions()
+        let (_, number, count) = questionProvider.nextQuestion()
+        
+        questionNumberHeader.configure(currentQuestion: number, numberOfQuestions: count)
         tableView.reloadData()
     }
     
     //MARK: - Private
     private func setupViews() {
         view.addSubview(tableView)
-        view.backgroundColor = .red
     }
     
     private func setupConstraints() {
         tableView.snp.makeConstraints { make in
             make.top.left.right.bottom.equalToSuperview()
-        }
-        
-        headerLabel.snp.makeConstraints { make in
-            make.top.left.right.bottom.equalTo(tableView).inset(40)
         }
     }
 }
@@ -109,12 +95,9 @@ extension GameVC: UITableViewDataSource {
         if let sectionType = QuestionSectionType.init(rawValue: section) {
             
             switch sectionType {
-            case .question:
-                return 1
-            case .answer:
-                return currentQuestion?.answers.count ?? 0
-            case .button:
-                return 1
+            case .question: return QuestionType.allCases.count
+            case .answer: return questionProvider.currentQuestion?.answers.count ?? 0
+            case .button: return 1
             }
         }
         return 0
@@ -122,30 +105,44 @@ extension GameVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let fullQuestion = questions[indexPath.section]
-        
         if let sectionType = QuestionSectionType.init(rawValue: indexPath.section) {
             
             switch sectionType {
             case .question:
                 
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: QuestionTextCell.reuseId, for: indexPath) as? QuestionTextCell else { return UITableViewCell() }
-                cell.configure(currentQuestion)
-                return cell
+                if let questionType = QuestionType(rawValue: indexPath.row) {
+                    
+                    switch questionType {
+                    case .text:
+                        guard let cell = tableView.dequeueReusableCell(withIdentifier: QuestionTextCell.reuseId, for: indexPath) as? QuestionTextCell else { return UITableViewCell() }
+                        cell.configure(questionProvider.currentQuestion)
+                        return cell
+                        
+                    case .image:
+                        
+                        guard let cell = tableView.dequeueReusableCell(withIdentifier: QuestionImageCell.reuseId, for: indexPath) as? QuestionImageCell else { return UITableViewCell() }
+                        cell.configure(questionProvider.currentQuestion)
+                        return cell
+                    }
+                }
                 
             case .answer:
                 
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: AnswerCell.reuseId, for: indexPath) as? AnswerCell else { return UITableViewCell() }
                 
-                let answer = currentQuestion?.answers[indexPath.row]
+                let answer = questionProvider.currentQuestion?.answers[indexPath.row]
                 
                 cell.configure(answer)
+                cell.delegate = self
                 
                 return cell
                 
             case .button:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: CheckButtonCell.reuseId, for: indexPath) as? CheckButtonCell else { return UITableViewCell() }
-                cell.configure(currentQuestion)
+                
+                cell.configure(questionProvider.currentQuestion)
+                cell.delegate = self
+                
                 return cell
             }
         }
@@ -158,18 +155,44 @@ extension GameVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        let fullQuestion = questions[indexPath.section]
-        
-        if let questionType = QuestionType.init(rawValue: indexPath.row) {
-            switch questionType {
-            case .text:
-                return fullQuestion.text!.isEmpty ? 0 : UITableView.automaticDimension
-            case .image:
-                return fullQuestion.image!.isEmpty ? 0 : UITableView.automaticDimension
+        if let sectionType = QuestionSectionType.init(rawValue: indexPath.section) {
+            switch sectionType {
+            case .question:
+                
+                if let questionType = QuestionType(rawValue: indexPath.row) {
+                    switch questionType {
+                    case .text:
+                        return questionProvider.currentQuestion?.text == "" ? 0 : UITableView.automaticDimension
+                    case .image:
+                        return questionProvider.currentQuestion?.image == "" ? 0 : UIScreen.main.bounds.width
+                    }
+                }
+                
             default: return UITableView.automaticDimension
             }
         }
         return UITableView.automaticDimension
     }
+}
+
+//MARK: - CheckButtonCellDelegate
+extension GameVC: CheckButtonCellDelegate {
     
+    func checkButtonCellNextQuestion() {
+        
+        let (_, number, count) = questionProvider.nextQuestion()
+        questionNumberHeader.configure(currentQuestion: number, numberOfQuestions: count)
+        
+        tableView.reloadData()
+        
+    }
+}
+//MARK: - AnswerCellDelegate
+extension GameVC: AnswerCellDelegate {
+    
+    func answerCellSelectAnswer() {
+        
+        tableView.reloadData()
+        
+    }
 }

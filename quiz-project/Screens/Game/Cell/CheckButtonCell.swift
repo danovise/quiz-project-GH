@@ -7,9 +7,16 @@
 
 import UIKit
 
+protocol CheckButtonCellDelegate: AnyObject {
+    
+    func checkButtonCellNextQuestion()
+}
+
 class CheckButtonCell: UITableViewCell {
     
     static var reuseId = "CheckButtonCell"
+    
+    var delegate: CheckButtonCellDelegate?
     
     private lazy var checkButton: UIButton = {
         
@@ -17,6 +24,8 @@ class CheckButtonCell: UITableViewCell {
         button.setTitle("Проверить", for: .normal)
         button.backgroundColor = .blue
         button.layer.cornerRadius = 10
+        
+        button.addTarget(self, action: #selector(nextQuestionAction), for: .touchUpInside)
         
         return button
     }()
@@ -51,6 +60,12 @@ class CheckButtonCell: UITableViewCell {
     func configure(_ model: Question?) {
         
         checkButton.setTitle("Продолжить", for: .normal)
+    }
+    
+    //MARK: - Actions
+    @objc func nextQuestionAction() {
+        
+        delegate?.checkButtonCellNextQuestion()
     }
 }
 
