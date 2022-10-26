@@ -11,8 +11,11 @@ protocol QuestionsProvider {
     
     var allQuestions: [Question] { get set } //все вопросы - 10
     var questions: [Question] { get set } //текущий список вопросов
-    
     var currentQuestion: Question? { get set }
+    
+    var checkButtonState: CheckButtonState { get set }
+    var answerIsChecked: Bool { get set }
+    var numberOfCorrectQuestions: Int { get set }
     
     func fetchAllQuestions()
     func nextQuestion() -> (Question?, Int, Int)
@@ -24,8 +27,12 @@ class QuestionsProviderImpl: QuestionsProvider {
     
     var allQuestions: [Question] = []
     var questions: [Question] = []
-
     var currentQuestion: Question? = nil
+    
+    var checkButtonState: CheckButtonState = .normal
+    
+    var answerIsChecked: Bool = false //ответ выбран
+    var numberOfCorrectQuestions = 0 //счетчик правильных ответов
     
     var jsonService: JsonService
     

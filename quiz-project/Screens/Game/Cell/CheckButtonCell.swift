@@ -7,14 +7,21 @@
 
 import UIKit
 
+enum CheckButtonState {
+    case normal // стартовое состояние
+    case check //1 состояние - Проверить ответ
+    case next //2 состояние - Следующий вопрос
+}
+
 protocol CheckButtonCellDelegate: AnyObject {
-    
-    func checkButtonCellNextQuestion()
+    func checkButtonCellNextQuestion(_ buttonState: CheckButtonState)
 }
 
 class CheckButtonCell: UITableViewCell {
     
     static var reuseId = "CheckButtonCell"
+    
+    var buttonState: CheckButtonState = .normal
     
     var delegate: CheckButtonCellDelegate?
     
@@ -45,6 +52,8 @@ class CheckButtonCell: UITableViewCell {
     
     private func setupViews() {
         contentView.addSubview(checkButton)
+        
+        self.selectionStyle = .none
     }
     
     private func setupConstraints() {
@@ -57,15 +66,38 @@ class CheckButtonCell: UITableViewCell {
     
     //MARK: - Public
     
-    func configure(_ model: Question?) {
+    func configure(_ model: Question?,  answerIsChecked: Bool) {
         
-        checkButton.setTitle("Продолжить", for: .normal)
+        checkButton.isEnabled = answerIsChecked
     }
     
     //MARK: - Actions
     @objc func nextQuestionAction() {
         
-        delegate?.checkButtonCellNextQuestion()
+        switch buttonState {
+            
+        case .normal:
+            
+            checkButton.setTitle("Следующий", for: .normal)
+            buttonState = .check
+            delegate?.checkButtonCellNextQuestion(buttonState) //output интерфейс
+            
+        case .check:
+            
+            checkButton.setTitle("Проверить", for: .normal)
+            buttonState = .next
+            delegate?.checkButtonCellNextQuestion(buttonState) //output интерфейс
+            
+          
+        case .next:
+            
+            checkButton.setTitle("Следующий", for: .normal)
+            buttonState = .check
+            
+            delegate?.checkButtonCellNextQuestion(buttonState) //output интерфейс
+            
+        }
     }
+    
 }
 

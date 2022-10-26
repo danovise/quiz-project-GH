@@ -1,20 +1,25 @@
 {
     "items":[
         {
+            "id": 1,
             "text":"Как называется столица американского штата Калифорния?",
             "image":"",
+            "type": "single, binary",
             "answers":[
                 {
+                    "id": 1,
                     "text":"Сан-Диего",
                     "isCorrect":false,
                     "isSelected":false
                 },
                 {
+                    "id": 2,
                     "text":"Чикаго",
                     "isCorrect":false,
                     "isSelected":false
                 },
                 {
+                    "id": 3,
                     "text":"Сакраменто",
                     "isCorrect":true,
                     "isSelected":false
@@ -22,20 +27,25 @@
             ]
         },
         {
+            "id": 2,
             "text":"Как называются четыре факультета Хогвартса?",
             "image":"",
+            "type": "multiline",
             "answers":[
                 {
+                    "id": 1,
                     "text":"Красный, синий, зеленый и оранжевый",
                     "isCorrect":false,
                     "isSelected":false
                 },
                 {
+                    "id": 2,
                     "text":"Гриффиндор, Пуффендуй, Когтевран, Слизерин",
                     "isCorrect":true,
                     "isSelected":false
                 },
                 {
+                    "id": 3,
                     "text":"Грифон, Ворон, Слон и Змея",
                     "isCorrect":false,
                     "isSelected":false
@@ -43,20 +53,25 @@
             ]
         },
         {
+            "id": 3,
             "text":"Какой безалкогольный напиток первым был взят в космос?",
             "image":"",
+            "type": "single, binary",
             "answers":[
                 {
+                    "id": 1,
                     "text":"Пепси",
                     "isCorrect":false,
                     "isSelected":false
                 },
                 {
+                    "id": 2,
                     "text":"Кока-кола",
                     "isCorrect":true,
                     "isSelected":false
                 },
                 {
+                    "id": 3,
                     "text":"Фанта",
                     "isCorrect":false,
                     "isSelected":false
@@ -64,20 +79,25 @@
             ]
         },
         {
+            "id": 4,
             "text":"Сколько длится мгновение?",
             "image":"",
+            "type": "single, binary",
             "answers":[
                 {
+                    "id": 1,
                     "text":"90 секунд",
                     "isCorrect":true,
                     "isSelected":false
                 },
                 {
+                    "id": 2,
                     "text":"60 секунд",
                     "isCorrect":false,
                     "isSelected":false
                 },
                 {
+                    "id": 3,
                     "text":"180 секунд",
                     "isCorrect":false,
                     "isSelected":false
@@ -85,20 +105,25 @@
             ]
         },
         {
+            "id": 5,
             "text":"Какая служба электронной почты принадлежит компании Microsoft?",
             "image":"",
+            "type": "multiline",
             "answers":[
                 {
+                    "id": 1,
                     "text":"Outlook",
                     "isCorrect":true,
                     "isSelected":false
                 },
                 {
+                    "id": 2,
                     "text":"Gmail",
                     "isCorrect":false,
                     "isSelected":false
                 },
                 {
+                    "id": 3,
                     "text":"iCloud Mail",
                     "isCorrect":false,
                     "isSelected":false
@@ -106,20 +131,25 @@
             ]
         },
         {
+            "id": 6,
             "text":"Какого цвета была таблетка, которую принимает Нео в фильме “Матрица”?",
             "image":"",
+            "type": "multiline",
             "answers":[
                 {
+                    "id": 1,
                     "text":"Синий",
                     "isCorrect":false,
                     "isSelected":false
                 },
                 {
+                    "id": 2,
                     "text":"Красный",
                     "isCorrect":true,
                     "isSelected":false
                 },
                 {
+                    "id": 3,
                     "text":"Желтый",
                     "isCorrect":false,
                     "isSelected":false
@@ -127,20 +157,25 @@
             ]
         },
         {
+            "id": 7,
             "text":"Каково было первоначальное название Нью-Йорка?",
             "image":"",
+            "type": "multiline",
             "answers":[
                 {
+                    "id": 1,
                     "text":"Метрополис",
                     "isCorrect":false,
                     "isSelected":false
                 },
                 {
+                    "id": 2,
                     "text":"Готэм",
                     "isCorrect":false,
                     "isSelected":false
                 },
                 {
+                    "id": 3,
                     "text":"Новый Амстердам",
                     "isCorrect":true,
                     "isSelected":false
@@ -148,20 +183,25 @@
             ]
         },
         {
+            "id": 8,
             "text":"Какой город является столицей Австралии?",
             "image":"",
+            "type": "single, binary",
             "answers":[
                 {
+                    "id": 1,
                     "text":"Канберра",
                     "isCorrect":true,
                     "isSelected":false
                 },
                 {
+                    "id": 2,
                     "text":"Сидней",
                     "isCorrect":false,
                     "isSelected":false
                 },
                 {
+                    "id": 3,
                     "text":"Мельбурн",
                     "isCorrect":false,
                     "isSelected":false
@@ -169,20 +209,25 @@
             ]
         },
         {
+            "id": 9,
             "text":"Какой автор написал книги «Игра престолов»?",
             "image":"",
+            "type": "single, binary",
             "answers":[
                 {
+                    "id": 1,
                     "text":"Дж. К. Роулинг",
                     "isCorrect":false,
                     "isSelected":false
                 },
                 {
+                    "id": 2,
                     "text":"Дж. Р. Р. Толкиен",
                     "isCorrect":false,
                     "isSelected":false
                 },
                 {
+                    "id": 3,
                     "text":"Джордж Р. Р. Мартин",
                     "isCorrect":true,
                     "isSelected":false
@@ -190,20 +235,25 @@
             ]
         },
         {
+            "id": 10,
             "text":"Какое популярное морское существо обладает способностью клонировать себя?",
             "image":"",
+            "type": "multiline",
             "answers":[
                 {
+                    "id": 1,
                     "text":"Медуза",
                     "isCorrect":true,
                     "isSelected":false
                 },
                 {
+                    "id": 2,
                     "text":"Осьминог",
                     "isCorrect":false,
                     "isSelected":false
                 },
                 {
+                    "id": 3,
                     "text":"Кальмар",
                     "isCorrect":false,
                     "isSelected":false

@@ -30,7 +30,7 @@ class AnswerCell: UITableViewCell {
     
     private lazy var backgroundCellView: UIView = {
         var view = UIView()
-        view.backgroundColor = .yellow.withAlphaComponent(0.5)
+     //   view.backgroundColor = .yellow.withAlphaComponent(0.5)
         view.layer.cornerRadius = 10
         
         return view
@@ -81,16 +81,28 @@ class AnswerCell: UITableViewCell {
     
     //MARK: - Public
     
-    func configure(_ model: Answer?) {
+    func configure(_ model: Answer?, buttonState: CheckButtonState) {
         
         currentAnswer = model
         
         answerLabel.text = model?.text ?? ""
         
-        if model?.isSelected == true {
-            backgroundCellView.backgroundColor = .blue.withAlphaComponent(0.7)
-        } else {
-            backgroundCellView.backgroundColor = .yellow.withAlphaComponent(0.5)
+        switch buttonState {
+        case .normal, .next:
+            
+            
+            if model?.isSelected == true {
+                backgroundCellView.backgroundColor = .blue.withAlphaComponent(0.7)
+            } else {
+                backgroundCellView.backgroundColor = .lightGray.withAlphaComponent(0.5)
+            }
+            
+        case .check:
+            if let isCorrect = model?.isCorrect, isCorrect == true {
+                backgroundCellView.backgroundColor = .green.withAlphaComponent(0.7)
+            } else {
+                backgroundCellView.backgroundColor = .red.withAlphaComponent(0.7)
+            }
         }
     }
     //MARK: - Actions

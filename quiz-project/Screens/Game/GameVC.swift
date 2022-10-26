@@ -21,7 +21,7 @@ enum QuestionType: Int, CaseIterable {
 
 class GameVC: UIViewController {
     
-    var questionProvider: QuestionsProvider
+    var provider: QuestionsProvider
     
     lazy var questionNumberHeader = QuestionNumberHeader(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 100))
     
@@ -44,7 +44,7 @@ class GameVC: UIViewController {
     //MARK: - Lifecycle
     
     init(questionProvider: QuestionsProvider) {
-        self.questionProvider = questionProvider
+        self.provider = questionProvider
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -65,8 +65,8 @@ class GameVC: UIViewController {
     //MARK: - Request
     private func fetchLocalQuestions() {
         
-        questionProvider.fetchAllQuestions()
-        let (_, number, count) = questionProvider.nextQuestion()
+        provider.fetchAllQuestions()
+        let (_, number, count) = provider.nextQuestion()
         
         questionNumberHeader.configure(currentQuestion: number, numberOfQuestions: count)
         tableView.reloadData()
@@ -96,7 +96,7 @@ extension GameVC: UITableViewDataSource {
             
             switch sectionType {
             case .question: return QuestionType.allCases.count
-            case .answer: return questionProvider.currentQuestion?.answers.count ?? 0
+            case .answer: return provider.currentQuestion?.answers.count ?? 0
             case .button: return 1
             }
         }
@@ -115,13 +115,13 @@ extension GameVC: UITableViewDataSource {
                     switch questionType {
                     case .text:
                         guard let cell = tableView.dequeueReusableCell(withIdentifier: QuestionTextCell.reuseId, for: indexPath) as? QuestionTextCell else { return UITableViewCell() }
-                        cell.configure(questionProvider.currentQuestion)
+                        cell.configure(provider.currentQuestion)
                         return cell
                         
                     case .image:
                         
                         guard let cell = tableView.dequeueReusableCell(withIdentifier: QuestionImageCell.reuseId, for: indexPath) as? QuestionImageCell else { return UITableViewCell() }
-                        cell.configure(questionProvider.currentQuestion)
+                        cell.configure(provider.currentQuestion)
                         return cell
                     }
                 }
@@ -130,9 +130,9 @@ extension GameVC: UITableViewDataSource {
                 
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: AnswerCell.reuseId, for: indexPath) as? AnswerCell else { return UITableViewCell() }
                 
-                let answer = questionProvider.currentQuestion?.answers[indexPath.row]
+                let answer = provider.currentQuestion?.answers[indexPath.row]
                 
-                cell.configure(answer)
+                cell.configure(answer, buttonState: provider.checkButtonState)
                 cell.delegate = self
                 
                 return cell
@@ -140,7 +140,7 @@ extension GameVC: UITableViewDataSource {
             case .button:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: CheckButtonCell.reuseId, for: indexPath) as? CheckButtonCell else { return UITableViewCell() }
                 
-                cell.configure(questionProvider.currentQuestion)
+                cell.configure(provider.currentQuestion, answerIsChecked: provider.answerIsChecked)
                 cell.delegate = self
                 
                 return cell
@@ -162,9 +162,9 @@ extension GameVC: UITableViewDelegate {
                 if let questionType = QuestionType(rawValue: indexPath.row) {
                     switch questionType {
                     case .text:
-                        return questionProvider.currentQuestion?.text == "" ? 0 : UITableView.automaticDimension
+                        return provider.currentQuestion?.text == "" ? 0 : UITableView.automaticDimension
                     case .image:
-                        return questionProvider.currentQuestion?.image == "" ? 0 : UIScreen.main.bounds.width
+                        return provider.currentQuestion?.image == "" ? 0 : UIScreen.main.bounds.width
                     }
                 }
                 
@@ -178,13 +178,50 @@ extension GameVC: UITableViewDelegate {
 //MARK: - CheckButtonCellDelegate
 extension GameVC: CheckButtonCellDelegate {
     
-    func checkButtonCellNextQuestion() {
+    func countCorrectQuestion() {
+        var isCorrect = true
+        let answers = provider.currentQuestion?.answers ?? []
+        for answer in answers {
+            
+            if answer.isCorrect != answer.isSelected {
+                isCorrect = false
+            }
+        }
         
-        let (_, number, count) = questionProvider.nextQuestion()
-        questionNumberHeader.configure(currentQuestion: number, numberOfQuestions: count)
+        if isCorrect == true {
+            provider.numberOfCorrectQuestions += 1
+        }
+    }
+    
+    func checkButtonCellNextQuestion(_ buttonState: CheckButtonState) {
         
+        provider.checkButtonState = buttonState
+        
+        switch buttonState {
+            
+        case .normal: break
+        case .check:
+
+            countCorrectQuestion()
+            tableView.reloadData()
+                      
+        case .next:
+
+            //Переход на следующий вопрос
+            let (question, number, count) = provider.nextQuestion()
+            questionNumberHeader.configure(currentQuestion: number, numberOfQuestions: count)
+            
+            provider.answerIsChecked = false
+            
+            if question == nil {
+                
+                let alertController = UIAlertController(title: "Поздравляю!", message: "Отвечено правильно \(provider.numberOfCorrectQuestions) вопросов из \(provider.allQuestions.count) вопросов", preferredStyle: .alert)
+                
+                self.present(alertController, animated: true, completion: nil)
+                
+            }
+        }
         tableView.reloadData()
-        
     }
 }
 //MARK: - AnswerCellDelegate
@@ -192,6 +229,7 @@ extension GameVC: AnswerCellDelegate {
     
     func answerCellSelectAnswer() {
         
+        provider.answerIsChecked = true
         tableView.reloadData()
         
     }

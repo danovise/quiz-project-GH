@@ -14,12 +14,14 @@ struct QuestionsResponse: Codable {
 
 // MARK: - Item
 struct Question: Codable {
+    let id: Int
     let text, image: String?
     let answers: [Answer]
 }
 
 // MARK: - Answer
 class Answer: Codable {
+    let id: Int
     let text: String
     let isCorrect: Bool
     
