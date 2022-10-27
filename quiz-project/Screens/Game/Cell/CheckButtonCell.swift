@@ -8,7 +8,6 @@
 import UIKit
 
 enum CheckButtonState {
-    case normal // стартовое состояние
     case check //1 состояние - Проверить ответ
     case next //2 состояние - Следующий вопрос
 }
@@ -21,7 +20,7 @@ class CheckButtonCell: UITableViewCell {
     
     static var reuseId = "CheckButtonCell"
     
-    var buttonState: CheckButtonState = .normal
+    var buttonState: CheckButtonState = .next
     
     var delegate: CheckButtonCellDelegate?
     
@@ -75,12 +74,6 @@ class CheckButtonCell: UITableViewCell {
     @objc func nextQuestionAction() {
         
         switch buttonState {
-            
-        case .normal:
-            
-            checkButton.setTitle("Следующий", for: .normal)
-            buttonState = .check
-            delegate?.checkButtonCellNextQuestion(buttonState) //output интерфейс
             
         case .check:
             

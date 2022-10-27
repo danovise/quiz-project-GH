@@ -29,7 +29,7 @@ class QuestionsProviderImpl: QuestionsProvider {
     var questions: [Question] = []
     var currentQuestion: Question? = nil
     
-    var checkButtonState: CheckButtonState = .normal
+    var checkButtonState: CheckButtonState = .next
     
     var answerIsChecked: Bool = false //ответ выбран
     var numberOfCorrectQuestions = 0 //счетчик правильных ответов

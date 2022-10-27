@@ -199,7 +199,6 @@ extension GameVC: CheckButtonCellDelegate {
         
         switch buttonState {
             
-        case .normal: break
         case .check:
 
             countCorrectQuestion()

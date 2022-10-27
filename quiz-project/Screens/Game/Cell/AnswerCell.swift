@@ -88,8 +88,7 @@ class AnswerCell: UITableViewCell {
         answerLabel.text = model?.text ?? ""
         
         switch buttonState {
-        case .normal, .next:
-            
+        case .next:
             
             if model?.isSelected == true {
                 backgroundCellView.backgroundColor = .blue.withAlphaComponent(0.7)
