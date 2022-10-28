@@ -19,9 +19,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let jsonService = JsonServiceImpl()
         let questionProvider = QuestionsProviderImpl(jsonService: jsonService)
-        let gameVC = GameVC(questionProvider: questionProvider) //Dependency injection -> через инициализатор
         
-        window?.rootViewController = gameVC
+//        let gameVC = GameVC(questionProvider: questionProvider) //Dependency injection -> через инициализатор
+//        window?.rootViewController = gameVC
+        
+        let fastGameVC = FastGameVC(questionProvider: questionProvider)
+        window?.rootViewController = fastGameVC
+        
         window?.makeKeyAndVisible()
         
         return true
