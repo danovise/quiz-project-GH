@@ -24,6 +24,8 @@
 		842C345F2900065D00BF82D9 /* CheckButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C345E2900065D00BF82D9 /* CheckButtonCell.swift */; };
 		842C34612900067B00BF82D9 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C34602900067B00BF82D9 /* MainVC.swift */; };
 		842C3464290006FC00BF82D9 /* JsonService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C3463290006FC00BF82D9 /* JsonService.swift */; };
+		8456DC06290F0CDA00C49AAE /* ScreenFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456DC05290F0CDA00C49AAE /* ScreenFactory.swift */; };
+		8456DC09290F0D0C00C49AAE /* AuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456DC08290F0D0C00C49AAE /* AuthVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +47,8 @@
 		842C345E2900065D00BF82D9 /* CheckButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckButtonCell.swift; sourceTree = "<group>"; };
 		842C34602900067B00BF82D9 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		842C3463290006FC00BF82D9 /* JsonService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonService.swift; sourceTree = "<group>"; };
+		8456DC05290F0CDA00C49AAE /* ScreenFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenFactory.swift; sourceTree = "<group>"; };
+		8456DC08290F0D0C00C49AAE /* AuthVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				842C34372900008C00BF82D9 /* AppDelegate.swift */,
+				8456DC05290F0CDA00C49AAE /* ScreenFactory.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -106,6 +111,7 @@
 		842C344C290000B900BF82D9 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				8456DC07290F0CFC00C49AAE /* Auth */,
 				842C3458290005F800BF82D9 /* Main */,
 				842C3457290005E800BF82D9 /* Game */,
 			);
@@ -169,6 +175,14 @@
 				840D4707290556B700550EBD /* QuestionsProvider.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		8456DC07290F0CFC00C49AAE /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				8456DC08290F0D0C00C49AAE /* AuthVC.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,8 +262,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8456DC09290F0D0C00C49AAE /* AuthVC.swift in Sources */,
 				842C343C2900008C00BF82D9 /* GameVC.swift in Sources */,
 				840D47062905568400550EBD /* QuestionImageCell.swift in Sources */,
+				8456DC06290F0CDA00C49AAE /* ScreenFactory.swift in Sources */,
 				840D4708290556B700550EBD /* QuestionsProvider.swift in Sources */,
 				842C34382900008C00BF82D9 /* AppDelegate.swift in Sources */,
 				840D47042905565100550EBD /* QuestionNumberHeader.swift in Sources */,

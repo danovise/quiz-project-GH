@@ -6,31 +6,32 @@
 //
 
 import UIKit
+//import FirebaseCore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
+    
+    
     var window: UIWindow?
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+      //  configureFirebase()
         
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        let jsonService = JsonServiceImpl()
-        let questionProvider = QuestionsProviderImpl(jsonService: jsonService)
+        let authVC = ScreenFactoryImpl().makeAuthScreen()
+        let navigationController = UINavigationController(rootViewController: authVC)
         
-//        let gameVC = GameVC(questionProvider: questionProvider) //Dependency injection -> через инициализатор
-//        window?.rootViewController = gameVC
-        
-        let fastGameVC = FastGameVC(questionProvider: questionProvider)
-        window?.rootViewController = fastGameVC
-        
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         
         return true
     }
-
+    
+//    func configureFirebase() {
+//        FirebaseApp.configure()
+//    }
 }
 
 
