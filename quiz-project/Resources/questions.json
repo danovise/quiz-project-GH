@@ -4,6 +4,7 @@
             "id": 1,
             "text":"Как называется столица американского штата Калифорния?",
             "image":"",
+            "category":"cities and countries",
             "type": "single, binary",
             "answers":[
                 {
@@ -30,6 +31,7 @@
             "id": 2,
             "text":"Как называются четыре факультета Хогвартса?",
             "image":"",
+            "category":"films and series",
             "type": "multiline",
             "answers":[
                 {
@@ -54,25 +56,26 @@
         },
         {
             "id": 3,
-            "text":"Какой безалкогольный напиток первым был взят в космос?",
+            "text":"Девизом какой страны является сочетание «Свобода, Равенство, Братство»?",
             "image":"",
+            "category":"cities and countries",
             "type": "single, binary",
             "answers":[
                 {
                     "id": 1,
-                    "text":"Пепси",
+                    "text":"США",
                     "isCorrect":false,
                     "isSelected":false
                 },
                 {
                     "id": 2,
-                    "text":"Кока-кола",
+                    "text":"Франция",
                     "isCorrect":true,
                     "isSelected":false
                 },
                 {
                     "id": 3,
-                    "text":"Фанта",
+                    "text":"Великобритания",
                     "isCorrect":false,
                     "isSelected":false
                 }
@@ -80,25 +83,26 @@
         },
         {
             "id": 4,
-            "text":"Сколько длится мгновение?",
+            "text":"Какую страну называют «Лёгкими Европы», получившую такое название за обилие лесов на её территории?",
             "image":"",
+            "category":"cities and countries",
             "type": "single, binary",
             "answers":[
                 {
                     "id": 1,
-                    "text":"90 секунд",
+                    "text":"Беларусь",
                     "isCorrect":true,
                     "isSelected":false
                 },
                 {
                     "id": 2,
-                    "text":"60 секунд",
+                    "text":"Украина",
                     "isCorrect":false,
                     "isSelected":false
                 },
                 {
                     "id": 3,
-                    "text":"180 секунд",
+                    "text":"Польша",
                     "isCorrect":false,
                     "isSelected":false
                 }
@@ -106,25 +110,26 @@
         },
         {
             "id": 5,
-            "text":"Какая служба электронной почты принадлежит компании Microsoft?",
+            "text":"Кто из этих актеров никогда не исполнял роль человека-паука?",
             "image":"",
+            "category":"films and series",
             "type": "multiline",
             "answers":[
                 {
                     "id": 1,
-                    "text":"Outlook",
+                    "text":"Джейк Джилленхол",
                     "isCorrect":true,
                     "isSelected":false
                 },
                 {
                     "id": 2,
-                    "text":"Gmail",
+                    "text":"Том Холланд",
                     "isCorrect":false,
                     "isSelected":false
                 },
                 {
                     "id": 3,
-                    "text":"iCloud Mail",
+                    "text":"Тоби Магуайр",
                     "isCorrect":false,
                     "isSelected":false
                 }
@@ -134,6 +139,7 @@
             "id": 6,
             "text":"Какого цвета была таблетка, которую принимает Нео в фильме “Матрица”?",
             "image":"",
+            "category":"films and series",
             "type": "multiline",
             "answers":[
                 {
@@ -160,6 +166,7 @@
             "id": 7,
             "text":"Каково было первоначальное название Нью-Йорка?",
             "image":"",
+            "category":"cities and countries",
             "type": "multiline",
             "answers":[
                 {
@@ -186,6 +193,7 @@
             "id": 8,
             "text":"Какой город является столицей Австралии?",
             "image":"",
+            "category":"cities and countries",
             "type": "single, binary",
             "answers":[
                 {
@@ -210,25 +218,26 @@
         },
         {
             "id": 9,
-            "text":"Какой автор написал книги «Игра престолов»?",
+            "text":"В каком фильме главный герой стал акционером компании Apple?",
             "image":"",
+            "category":"films and series",
             "type": "single, binary",
             "answers":[
                 {
                     "id": 1,
-                    "text":"Дж. К. Роулинг",
+                    "text":"Сладкий ноябрь",
                     "isCorrect":false,
                     "isSelected":false
                 },
                 {
                     "id": 2,
-                    "text":"Дж. Р. Р. Толкиен",
+                    "text":"Крёстный отец",
                     "isCorrect":false,
                     "isSelected":false
                 },
                 {
                     "id": 3,
-                    "text":"Джордж Р. Р. Мартин",
+                    "text":"Форрест Гамп",
                     "isCorrect":true,
                     "isSelected":false
                 }
@@ -236,26 +245,162 @@
         },
         {
             "id": 10,
-            "text":"Какое популярное морское существо обладает способностью клонировать себя?",
+            "text":"Какой секрет раскрыл главный герой фильма «Шоу Трумэна»?",
             "image":"",
+            "category":"films and series",
             "type": "multiline",
             "answers":[
                 {
                     "id": 1,
-                    "text":"Медуза",
+                    "text":"Весь мир следил за ним",
                     "isCorrect":true,
                     "isSelected":false
                 },
                 {
                     "id": 2,
-                    "text":"Осьминог",
+                    "text":"Его отец - инопланетянин",
                     "isCorrect":false,
                     "isSelected":false
                 },
                 {
                     "id": 3,
-                    "text":"Кальмар",
+                    "text":"Он избранный, который спасёт весь мир",
                     "isCorrect":false,
+                    "isSelected":false
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "text":"Где находится Тауэр, старинный замок-тюрьма, а ныне музей?",
+            "image":"",
+            "category":"аrchitecture",
+            "type": "single, binary",
+            "answers":[
+                {
+                    "id": 1,
+                    "text":"Париж",
+                    "isCorrect":false,
+                    "isSelected":false
+                },
+                {
+                    "id": 2,
+                    "text":"Вашингтон",
+                    "isCorrect":false,
+                    "isSelected":false
+                },
+                {
+                    "id": 3,
+                    "text":"Лондон",
+                    "isCorrect":true,
+                    "isSelected":false
+                }
+            ]
+        },
+        {
+            "id": 12,
+            "text":"Как называется жилое помещение, расположенное под крышей здания?",
+            "image":"",
+            "category":"аrchitecture",
+            "type": "single, binary",
+            "answers":[
+                {
+                    "id": 1,
+                    "text":"Веранда",
+                    "isCorrect":false,
+                    "isSelected":false
+                },
+                {
+                    "id": 2,
+                    "text":"Мансарда",
+                    "isCorrect":true,
+                    "isSelected":false
+                },
+                {
+                    "id": 3,
+                    "text":"Терраса",
+                    "isCorrect":false,
+                    "isSelected":false
+                }
+            ]
+        },
+        {
+            "id": 13,
+            "text":"Название какого архитектурного стиля дословно означает «узор из камня и раковин»?",
+            "image":"",
+            "category":"аrchitecture",
+            "type": "single, binary",
+            "answers":[
+                {
+                    "id": 1,
+                    "text":"Рококо",
+                    "isCorrect":true,
+                    "isSelected":false
+                },
+                {
+                    "id": 2,
+                    "text":"Барокко",
+                    "isCorrect":false,
+                    "isSelected":false
+                },
+                {
+                    "id": 3,
+                    "text":"Эклектика",
+                    "isCorrect":false,
+                    "isSelected":false
+                }
+            ]
+        },
+        {
+            "id": 14,
+            "text":"Где находится замок Нойшванштайн?",
+            "image":"",
+            "category":"аrchitecture",
+            "type": "single, binary",
+            "answers":[
+                {
+                    "id": 1,
+                    "text":"Дания",
+                    "isCorrect":false,
+                    "isSelected":false
+                },
+                {
+                    "id": 2,
+                    "text":"Франция",
+                    "isCorrect":false,
+                    "isSelected":false
+                },
+                {
+                    "id": 3,
+                    "text":"Германия",
+                    "isCorrect":true,
+                    "isSelected":false
+                }
+            ]
+        },
+        {
+            "id": 15,
+            "text":"Кто в архитектуре обычно дополняет мужскую статую атлантов?",
+            "image":"",
+            "category":"аrchitecture",
+            "type": "single, binary",
+            "answers":[
+                {
+                    "id": 1,
+                    "text":"Амазонки",
+                    "isCorrect":false,
+                    "isSelected":false
+                },
+                {
+                    "id": 2,
+                    "text":"Нимфы",
+                    "isCorrect":false,
+                    "isSelected":false
+                },
+                {
+                    "id": 3,
+                    "text":"Кариатиды",
+                    "isCorrect":true,
                     "isSelected":false
                 }
             ]
