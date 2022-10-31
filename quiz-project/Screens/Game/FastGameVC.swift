@@ -56,6 +56,8 @@ class FastGameVC: UIViewController {
         setupConstraints()
         
         fetchLocalQuestions()
+        
+        navigationItem.hidesBackButton = true
     }
     
     //MARK: - Request

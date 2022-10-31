@@ -60,6 +60,7 @@ class GameVC: UIViewController {
         
         fetchLocalQuestions()
         
+        navigationItem.hidesBackButton = true
     }
     
     //MARK: - Request
