@@ -26,6 +26,7 @@
 		842C3464290006FC00BF82D9 /* JsonService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C3463290006FC00BF82D9 /* JsonService.swift */; };
 		8456DC06290F0CDA00C49AAE /* ScreenFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456DC05290F0CDA00C49AAE /* ScreenFactory.swift */; };
 		8456DC09290F0D0C00C49AAE /* AuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456DC08290F0D0C00C49AAE /* AuthVC.swift */; };
+		8456DC3429105CF100C49AAE /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456DC3329105CF100C49AAE /* SignInVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		842C3463290006FC00BF82D9 /* JsonService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonService.swift; sourceTree = "<group>"; };
 		8456DC05290F0CDA00C49AAE /* ScreenFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenFactory.swift; sourceTree = "<group>"; };
 		8456DC08290F0D0C00C49AAE /* AuthVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthVC.swift; sourceTree = "<group>"; };
+		8456DC3329105CF100C49AAE /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				8456DC08290F0D0C00C49AAE /* AuthVC.swift */,
+				8456DC3329105CF100C49AAE /* SignInVC.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				842C345B2900063E00BF82D9 /* QuestionTextCell.swift in Sources */,
 				842C34502900037400BF82D9 /* QuestionsResponse.swift in Sources */,
 				842C345F2900065D00BF82D9 /* CheckButtonCell.swift in Sources */,
+				8456DC3429105CF100C49AAE /* SignInVC.swift in Sources */,
 				840D471C290BEE1600550EBD /* FastGameVC.swift in Sources */,
 				840D471E290BEE5400550EBD /* SelectAnswerCell.swift in Sources */,
 				842C345D2900064F00BF82D9 /* AnswerCell.swift in Sources */,
