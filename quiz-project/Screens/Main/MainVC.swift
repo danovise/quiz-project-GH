@@ -8,19 +8,29 @@
 import UIKit
 
 class MainVC: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.backgroundColor = .systemMint
+        
+        setupViews()
+        setupConstraints()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.showStandardGameScreen()
         }
+    }
+    
+    private func setupViews() {
+        view.backgroundColor = .cyan
+        navigationItem.hidesBackButton = true
+    }
+    
+    private func setupConstraints() {
+        
     }
     
     //MARK: - Navigation
