@@ -51,7 +51,8 @@ class QuestionImageCell: UITableViewCell {
     
     func configure(_ model: Question?) {
         
-        questionImageView.image = .init(named: model?.image ?? "")
+        let url = URL.init(string: model?.image ?? "")
+        questionImageView.sd_setImage(with: url)
     }
     
 }
