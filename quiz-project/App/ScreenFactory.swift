@@ -13,6 +13,7 @@ protocol ScreenFactory {
     func makeFastGameScreen() -> FastGameVC
     func makeAuthScreen() -> AuthVC
     func makeMainScreen() -> MainVC
+    func makeSignInVC() -> SignInVC
 }
 
 class ScreenFactoryImpl: ScreenFactory {
@@ -47,5 +48,11 @@ class ScreenFactoryImpl: ScreenFactory {
         
         let mainVC = MainVC()
         return mainVC
+    }
+    
+    func makeSignInVC() -> SignInVC {
+        
+        let signInVC = SignInVC()
+        return signInVC
     }
 }

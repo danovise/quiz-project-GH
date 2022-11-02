@@ -125,6 +125,8 @@ class AuthVC: UIViewController {
         
         setupViews()
         setupConstraints()
+        
+        showMainScreen()
     }
     
     func setupViews(){
@@ -164,6 +166,24 @@ class AuthVC: UIViewController {
         self.navigationController?.pushViewController(mainVC, animated: true)
     }
     
+//        //Логин - вход в аккаунт
+//        func authorizeToFirebase() {
+//
+//            Auth.auth().signIn(withEmail: "test@test.com", password: "test12345678") { result, error in
+//
+//                if let error = error {
+//
+//                    print(error.localizedDescription)
+//                    return
+//                }
+//
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//                    self.showMainScreen()
+//                }
+//            }
+//        }
+    
+    //Создание аккаунта
     @objc func registrationToFirebase() {
         
         Auth.auth().createUser(withEmail: "testtest@test.com", password: "12345678") { result, error in
@@ -173,6 +193,17 @@ class AuthVC: UIViewController {
                 print(error.localizedDescription)
                 return
             }
+        }
+    }
+    
+    //Логаут - выход из аккаунта
+    func logoutFromFirebase() {
+        
+        do {
+            try Auth.auth().signOut()
+            
+        } catch {
+            print(error.localizedDescription)
         }
     }
     
