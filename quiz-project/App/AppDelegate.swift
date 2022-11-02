@@ -6,7 +6,7 @@
 //
 
 import UIKit
-//import FirebaseCore
+import FirebaseCore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -29,9 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-//    func configureFirebase() {
-//        FirebaseApp.configure()
-//    }
+    func configureFirebase() {
+        FirebaseApp.configure()
+    }
 }
 
 

@@ -30,7 +30,7 @@
         {
             "id": 2,
             "text":"Как называются четыре факультета Хогвартса?",
-            "image":"https://firebasestorage.googleapis.com/v0/b/quiz-project-tms.appspot.com/o/hogwarts.png?alt=media&token=34def291-1bf7-451e-8287-a1ef8ab585e4",
+            "image":"https://firebasestorage.googleapis.com/v0/b/quiz-project-gh.appspot.com/o/hogwarts.png?alt=media&token=f79bbb37-7db5-4af1-8e04-258cd384d787",
             "category":"films and series",
             "type": "multiline",
             "answers":[
