@@ -16,7 +16,7 @@ class AnswerCell: UITableViewCell {
     static var reuseId = "AnswerCell"
     
     var currentAnswer: Answer? = nil
-    
+    var canTapAnswer: Bool = true
     var delegate: AnswerCellDelegate?
     
     private lazy var answerLabel: UILabel = {
@@ -30,7 +30,6 @@ class AnswerCell: UITableViewCell {
     
     private lazy var backgroundCellView: UIView = {
         var view = UIView()
-     //   view.backgroundColor = .yellow.withAlphaComponent(0.5)
         view.layer.cornerRadius = 10
         
         return view
@@ -81,9 +80,10 @@ class AnswerCell: UITableViewCell {
     
     //MARK: - Public
     
-    func configure(_ model: Answer?, buttonState: CheckButtonState) {
+    func configure(_ model: Answer?, buttonState: CheckButtonState, answerIsCorrect: Bool, canTapAnswer: Bool) {
         
-        currentAnswer = model
+        self.currentAnswer = model
+        self.canTapAnswer = canTapAnswer
         
         answerLabel.text = model?.text ?? ""
         
@@ -91,16 +91,27 @@ class AnswerCell: UITableViewCell {
         case .next:
             
             if model?.isSelected == true {
-                backgroundCellView.backgroundColor = .blue.withAlphaComponent(0.7)
+                backgroundCellView.backgroundColor = .blue.withAlphaComponent(0.9)
             } else {
                 backgroundCellView.backgroundColor = .lightGray.withAlphaComponent(0.5)
             }
             
         case .check:
+            
+            if answerIsCorrect == true {
+                
+                if let isCorrect = model?.isCorrect, isCorrect == true {
+                    backgroundCellView.backgroundColor = .green.withAlphaComponent(0.9)
+                } else {
+                    backgroundCellView.backgroundColor = .lightGray.withAlphaComponent(0.5)
+                }
+                return
+            }
+            //Расклад
             if let isCorrect = model?.isCorrect, isCorrect == true {
-                backgroundCellView.backgroundColor = .green.withAlphaComponent(0.7)
+                backgroundCellView.backgroundColor = .green.withAlphaComponent(0.9)
             } else {
-                backgroundCellView.backgroundColor = .red.withAlphaComponent(0.7)
+                backgroundCellView.backgroundColor = .red.withAlphaComponent(0.9)
             }
         }
     }
@@ -108,7 +119,10 @@ class AnswerCell: UITableViewCell {
     
     @objc func answerButtonAction() {
         
-        currentAnswer?.isSelected = currentAnswer?.isSelected == false ? true : false
-        delegate?.answerCellSelectAnswer()
+        if canTapAnswer == true || currentAnswer?.isSelected == true {
+            currentAnswer?.isSelected = currentAnswer?.isSelected == false ? true : false
+            delegate?.answerCellSelectAnswer()
+        }
     }
 }
+

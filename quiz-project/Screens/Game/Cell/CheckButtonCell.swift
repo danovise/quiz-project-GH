@@ -19,9 +19,7 @@ protocol CheckButtonCellDelegate: AnyObject {
 class CheckButtonCell: UITableViewCell {
     
     static var reuseId = "CheckButtonCell"
-    
     var buttonState: CheckButtonState = .next
-    
     var delegate: CheckButtonCellDelegate?
     
     private lazy var checkButton: UIButton = {
@@ -51,7 +49,6 @@ class CheckButtonCell: UITableViewCell {
     
     private func setupViews() {
         contentView.addSubview(checkButton)
-        
         self.selectionStyle = .none
     }
     
@@ -65,9 +62,8 @@ class CheckButtonCell: UITableViewCell {
     
     //MARK: - Public
     
-    func configure(_ model: Question?,  answerIsChecked: Bool) {
-        
-        checkButton.isEnabled = answerIsChecked
+    func configure(_ model: Question?, answerIsChecked: (value: Bool, count: Int)) {
+        checkButton.isEnabled = answerIsChecked.value //isSelected
     }
     
     //MARK: - Actions
@@ -86,7 +82,6 @@ class CheckButtonCell: UITableViewCell {
             
             checkButton.setTitle("Следующий", for: .normal)
             buttonState = .check
-            
             delegate?.checkButtonCellNextQuestion(buttonState) //output интерфейс
             
         }

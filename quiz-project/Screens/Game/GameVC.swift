@@ -54,23 +54,24 @@ class GameVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.hidesBackButton = true
         
         setupViews()
         setupConstraints()
         
-        fetchLocalQuestions()
-        
-        navigationItem.hidesBackButton = true
+        fetchQuestions()
     }
     
     //MARK: - Request
-    private func fetchLocalQuestions() {
+    private func fetchQuestions() {
         
-        provider.fetchAllQuestions()
-        let (_, number, count) = provider.nextQuestion()
-        
-        questionNumberHeader.configure(currentQuestion: number, numberOfQuestions: count)
-        tableView.reloadData()
+        provider.fetchAllQuestions { [self] in
+            
+            let (_, number, count) = self.provider.nextQuestion() //(question, number, count)
+            
+            self.questionNumberHeader.configure(currentQuestion: number, numberOfQuestions: count)
+            self.tableView.reloadData()
+        }
     }
     
     //MARK: - Private
@@ -80,7 +81,7 @@ class GameVC: UIViewController {
     
     private func setupConstraints() {
         tableView.snp.makeConstraints { make in
-            make.top.left.right.bottom.equalToSuperview()
+            make.edges.equalToSuperview()
         }
     }
 }
@@ -133,7 +134,7 @@ extension GameVC: UITableViewDataSource {
                 
                 let answer = provider.currentQuestion?.answers[indexPath.row]
                 
-                cell.configure(answer, buttonState: provider.checkButtonState)
+                cell.configure(answer, buttonState: provider.checkButtonState, answerIsCorrect: provider.answerIsCorrect, canTapAnswer: provider.canTapAnswer)
                 cell.delegate = self
                 
                 return cell
@@ -210,8 +211,7 @@ extension GameVC: CheckButtonCellDelegate {
             //Переход на следующий вопрос
             let (question, number, count) = provider.nextQuestion()
             questionNumberHeader.configure(currentQuestion: number, numberOfQuestions: count)
-            
-            provider.answerIsChecked = false
+           // provider.answerIsChecked = false
             
             if question == nil {
                 
@@ -229,7 +229,7 @@ extension GameVC: AnswerCellDelegate {
     
     func answerCellSelectAnswer() {
         
-        provider.answerIsChecked = true
+      //  provider.answerIsChecked = true
         tableView.reloadData()
         
     }
