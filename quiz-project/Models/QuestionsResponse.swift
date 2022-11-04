@@ -16,6 +16,7 @@ struct QuestionsResponse: Codable {
 struct Question: Codable {
     let id: Int
     let text, image: String?
+    let type: String
     let answers: [Answer]
 }
 
