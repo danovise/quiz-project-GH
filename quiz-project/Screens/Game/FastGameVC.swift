@@ -55,19 +55,21 @@ class FastGameVC: UIViewController {
         setupViews()
         setupConstraints()
         
-        fetchLocalQuestions()
+        fetchQuestions()
         
         navigationItem.hidesBackButton = true
     }
     
     //MARK: - Request
-    private func fetchLocalQuestions() {
+    private func fetchQuestions() {
         
-        provider.fetchAllQuestions()
-        let (_, number, count) = provider.nextQuestion()
-        
-        questionNumberHeader.configure(currentQuestion: number, numberOfQuestions: count)
-        tableView.reloadData()
+        provider.fetchAllQuestions { [self] in
+            
+            let (_, number, count) = self.provider.nextQuestion() //(question, number, count)
+            
+            self.questionNumberHeader.configure(currentQuestion: number, numberOfQuestions: count)
+            self.tableView.reloadData()
+        }
     }
     
     //MARK: - Private
