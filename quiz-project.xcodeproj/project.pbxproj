@@ -24,6 +24,13 @@
 		842C345F2900065D00BF82D9 /* CheckButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C345E2900065D00BF82D9 /* CheckButtonCell.swift */; };
 		842C34612900067B00BF82D9 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C34602900067B00BF82D9 /* MainVC.swift */; };
 		842C3464290006FC00BF82D9 /* JsonService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C3463290006FC00BF82D9 /* JsonService.swift */; };
+		843B2671292C03540082C6EA /* ZeroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843B266F292C03540082C6EA /* ZeroView.swift */; };
+		843B2672292C03540082C6EA /* ZeroView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843B2670292C03540082C6EA /* ZeroView.xib */; };
+		843B2675292C03920082C6EA /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 843B2674292C03920082C6EA /* Lottie */; };
+		843B2677292C03A80082C6EA /* question-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 843B2676292C03A80082C6EA /* question-animation.json */; };
+		843B267C292C03F40082C6EA /* UIVIew+PinEdges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843B2679292C03F30082C6EA /* UIVIew+PinEdges.swift */; };
+		843B267D292C03F40082C6EA /* UIView+hide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843B267A292C03F30082C6EA /* UIView+hide.swift */; };
+		843B267E292C03F40082C6EA /* UIView+loadNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843B267B292C03F40082C6EA /* UIView+loadNib.swift */; };
 		8456DC06290F0CDA00C49AAE /* ScreenFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456DC05290F0CDA00C49AAE /* ScreenFactory.swift */; };
 		8456DC09290F0D0C00C49AAE /* AuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456DC08290F0D0C00C49AAE /* AuthVC.swift */; };
 		8456DC3429105CF100C49AAE /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456DC3329105CF100C49AAE /* SignInVC.swift */; };
@@ -59,6 +66,12 @@
 		842C345E2900065D00BF82D9 /* CheckButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckButtonCell.swift; sourceTree = "<group>"; };
 		842C34602900067B00BF82D9 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		842C3463290006FC00BF82D9 /* JsonService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonService.swift; sourceTree = "<group>"; };
+		843B266F292C03540082C6EA /* ZeroView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZeroView.swift; sourceTree = "<group>"; };
+		843B2670292C03540082C6EA /* ZeroView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZeroView.xib; sourceTree = "<group>"; };
+		843B2676292C03A80082C6EA /* question-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "question-animation.json"; sourceTree = "<group>"; };
+		843B2679292C03F30082C6EA /* UIVIew+PinEdges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIVIew+PinEdges.swift"; sourceTree = "<group>"; };
+		843B267A292C03F30082C6EA /* UIView+hide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+hide.swift"; sourceTree = "<group>"; };
+		843B267B292C03F40082C6EA /* UIView+loadNib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+loadNib.swift"; sourceTree = "<group>"; };
 		8456DC05290F0CDA00C49AAE /* ScreenFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenFactory.swift; sourceTree = "<group>"; };
 		8456DC08290F0D0C00C49AAE /* AuthVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthVC.swift; sourceTree = "<group>"; };
 		8456DC3329105CF100C49AAE /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
@@ -81,6 +94,7 @@
 				84F974EC29127D4F0003EB32 /* FirebaseStorage in Frameworks */,
 				84F974E429127D4F0003EB32 /* FirebaseDatabase in Frameworks */,
 				84F974DC29127D4F0003EB32 /* FirebaseAnalytics in Frameworks */,
+				843B2675292C03920082C6EA /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,6 +131,8 @@
 				842C344B2900009800BF82D9 /* App */,
 				842C344C290000B900BF82D9 /* Screens */,
 				842C344E2900034C00BF82D9 /* Models */,
+				843B266E292C033D0082C6EA /* Views */,
+				843B2678292C03DA0082C6EA /* Extension */,
 				842C3462290006BC00BF82D9 /* Services */,
 				842C344D290000CF00BF82D9 /* Resources */,
 			);
@@ -145,6 +161,7 @@
 		842C344D290000CF00BF82D9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				843B2676292C03A80082C6EA /* question-animation.json */,
 				84F974EF29127F300003EB32 /* GoogleService-Info.plist */,
 				842C3451290003F300BF82D9 /* questions.json */,
 				842C34402900008D00BF82D9 /* Assets.xcassets */,
@@ -202,6 +219,25 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		843B266E292C033D0082C6EA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				843B266F292C03540082C6EA /* ZeroView.swift */,
+				843B2670292C03540082C6EA /* ZeroView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		843B2678292C03DA0082C6EA /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				843B267A292C03F30082C6EA /* UIView+hide.swift */,
+				843B267B292C03F40082C6EA /* UIView+loadNib.swift */,
+				843B2679292C03F30082C6EA /* UIVIew+PinEdges.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		8456DC07290F0CFC00C49AAE /* Auth */ = {
 			isa = PBXGroup;
 			children = (
@@ -239,6 +275,7 @@
 				84F974E729127D4F0003EB32 /* FirebaseFirestore */,
 				84F974E929127D4F0003EB32 /* FirebaseFirestoreSwift */,
 				84F974EB29127D4F0003EB32 /* FirebaseStorage */,
+				843B2674292C03920082C6EA /* Lottie */,
 			);
 			productName = "quiz-project";
 			productReference = 842C34342900008C00BF82D9 /* quiz-project.app */;
@@ -272,6 +309,7 @@
 				842C34532900054D00BF82D9 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				84E649F929127A9E00806959 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				84F974DA29127D4F0003EB32 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				843B2673292C03920082C6EA /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 842C34352900008C00BF82D9 /* Products */;
 			projectDirPath = "";
@@ -287,6 +325,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				843B2677292C03A80082C6EA /* question-animation.json in Resources */,
+				843B2672292C03540082C6EA /* ZeroView.xib in Resources */,
 				84F974F029127F300003EB32 /* GoogleService-Info.plist in Resources */,
 				842C3452290003F300BF82D9 /* questions.json in Resources */,
 				842C34442900008D00BF82D9 /* LaunchScreen.storyboard in Resources */,
@@ -305,18 +345,22 @@
 				842C343C2900008C00BF82D9 /* GameVC.swift in Sources */,
 				840D47062905568400550EBD /* QuestionImageCell.swift in Sources */,
 				8456DC06290F0CDA00C49AAE /* ScreenFactory.swift in Sources */,
+				843B267D292C03F40082C6EA /* UIView+hide.swift in Sources */,
 				840D4708290556B700550EBD /* QuestionsProvider.swift in Sources */,
 				842C34382900008C00BF82D9 /* AppDelegate.swift in Sources */,
 				840D47042905565100550EBD /* QuestionNumberHeader.swift in Sources */,
 				842C345B2900063E00BF82D9 /* QuestionTextCell.swift in Sources */,
 				842C34502900037400BF82D9 /* QuestionsResponse.swift in Sources */,
+				843B267C292C03F40082C6EA /* UIVIew+PinEdges.swift in Sources */,
 				842C345F2900065D00BF82D9 /* CheckButtonCell.swift in Sources */,
+				843B267E292C03F40082C6EA /* UIView+loadNib.swift in Sources */,
 				8456DC3429105CF100C49AAE /* SignInVC.swift in Sources */,
 				840D471C290BEE1600550EBD /* FastGameVC.swift in Sources */,
 				840D471E290BEE5400550EBD /* SelectAnswerCell.swift in Sources */,
 				842C345D2900064F00BF82D9 /* AnswerCell.swift in Sources */,
 				842C34612900067B00BF82D9 /* MainVC.swift in Sources */,
 				842C3464290006FC00BF82D9 /* JsonService.swift in Sources */,
+				843B2671292C03540082C6EA /* ZeroView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -534,6 +578,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		843B2673292C03920082C6EA /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 3.5.0;
+			};
+		};
 		84E649F929127A9E00806959 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
@@ -557,6 +609,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 842C34532900054D00BF82D9 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		843B2674292C03920082C6EA /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 843B2673292C03920082C6EA /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 		84E649FA29127A9E00806959 /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;
