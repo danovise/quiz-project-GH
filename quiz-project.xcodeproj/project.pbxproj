@@ -12,6 +12,9 @@
 		840D4708290556B700550EBD /* QuestionsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840D4707290556B700550EBD /* QuestionsProvider.swift */; };
 		840D471C290BEE1600550EBD /* FastGameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840D471B290BEE1600550EBD /* FastGameVC.swift */; };
 		840D471E290BEE5400550EBD /* SelectAnswerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840D471D290BEE5400550EBD /* SelectAnswerCell.swift */; };
+		841375A629311FF600DFD016 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841375A529311FF600DFD016 /* CategoryCell.swift */; };
+		841375A82931201800DFD016 /* GameModeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841375A72931201800DFD016 /* GameModeCell.swift */; };
+		841375AA2931202A00DFD016 /* StartGameButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841375A92931202A00DFD016 /* StartGameButtonCell.swift */; };
 		842C34382900008C00BF82D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C34372900008C00BF82D9 /* AppDelegate.swift */; };
 		842C343C2900008C00BF82D9 /* GameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C343B2900008C00BF82D9 /* GameVC.swift */; };
 		842C34412900008D00BF82D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 842C34402900008D00BF82D9 /* Assets.xcassets */; };
@@ -53,6 +56,9 @@
 		840D4707290556B700550EBD /* QuestionsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsProvider.swift; sourceTree = "<group>"; };
 		840D471B290BEE1600550EBD /* FastGameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastGameVC.swift; sourceTree = "<group>"; };
 		840D471D290BEE5400550EBD /* SelectAnswerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAnswerCell.swift; sourceTree = "<group>"; };
+		841375A529311FF600DFD016 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		841375A72931201800DFD016 /* GameModeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModeCell.swift; sourceTree = "<group>"; };
+		841375A92931202A00DFD016 /* StartGameButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGameButtonCell.swift; sourceTree = "<group>"; };
 		842C34342900008C00BF82D9 /* quiz-project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "quiz-project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		842C34372900008C00BF82D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		842C343B2900008C00BF82D9 /* GameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVC.swift; sourceTree = "<group>"; };
@@ -107,6 +113,16 @@
 				840D47032905565100550EBD /* QuestionNumberHeader.swift */,
 			);
 			path = Headers;
+			sourceTree = "<group>";
+		};
+		841375A429311FAD00DFD016 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				841375A529311FF600DFD016 /* CategoryCell.swift */,
+				841375A72931201800DFD016 /* GameModeCell.swift */,
+				841375A92931202A00DFD016 /* StartGameButtonCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		842C342B2900008C00BF82D9 = {
@@ -193,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				842C34602900067B00BF82D9 /* MainVC.swift */,
+				841375A429311FAD00DFD016 /* Cells */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -343,8 +360,10 @@
 			files = (
 				8456DC09290F0D0C00C49AAE /* AuthVC.swift in Sources */,
 				842C343C2900008C00BF82D9 /* GameVC.swift in Sources */,
+				841375A82931201800DFD016 /* GameModeCell.swift in Sources */,
 				840D47062905568400550EBD /* QuestionImageCell.swift in Sources */,
 				8456DC06290F0CDA00C49AAE /* ScreenFactory.swift in Sources */,
+				841375AA2931202A00DFD016 /* StartGameButtonCell.swift in Sources */,
 				843B267D292C03F40082C6EA /* UIView+hide.swift in Sources */,
 				840D4708290556B700550EBD /* QuestionsProvider.swift in Sources */,
 				842C34382900008C00BF82D9 /* AppDelegate.swift in Sources */,
@@ -358,6 +377,7 @@
 				840D471C290BEE1600550EBD /* FastGameVC.swift in Sources */,
 				840D471E290BEE5400550EBD /* SelectAnswerCell.swift in Sources */,
 				842C345D2900064F00BF82D9 /* AnswerCell.swift in Sources */,
+				841375A629311FF600DFD016 /* CategoryCell.swift in Sources */,
 				842C34612900067B00BF82D9 /* MainVC.swift in Sources */,
 				842C3464290006FC00BF82D9 /* JsonService.swift in Sources */,
 				843B2671292C03540082C6EA /* ZeroView.swift in Sources */,
