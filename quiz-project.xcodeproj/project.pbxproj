@@ -15,6 +15,8 @@
 		841375A629311FF600DFD016 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841375A529311FF600DFD016 /* CategoryCell.swift */; };
 		841375A82931201800DFD016 /* GameModeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841375A72931201800DFD016 /* GameModeCell.swift */; };
 		841375AA2931202A00DFD016 /* StartGameButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841375A92931202A00DFD016 /* StartGameButtonCell.swift */; };
+		841375AC2931208000DFD016 /* CategoryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841375AB2931208000DFD016 /* CategoryCollectionCell.swift */; };
+		841375AE2931209600DFD016 /* GameModeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841375AD2931209600DFD016 /* GameModeCollectionCell.swift */; };
 		842C34382900008C00BF82D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C34372900008C00BF82D9 /* AppDelegate.swift */; };
 		842C343C2900008C00BF82D9 /* GameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C343B2900008C00BF82D9 /* GameVC.swift */; };
 		842C34412900008D00BF82D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 842C34402900008D00BF82D9 /* Assets.xcassets */; };
@@ -59,6 +61,8 @@
 		841375A529311FF600DFD016 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		841375A72931201800DFD016 /* GameModeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModeCell.swift; sourceTree = "<group>"; };
 		841375A92931202A00DFD016 /* StartGameButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGameButtonCell.swift; sourceTree = "<group>"; };
+		841375AB2931208000DFD016 /* CategoryCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionCell.swift; sourceTree = "<group>"; };
+		841375AD2931209600DFD016 /* GameModeCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModeCollectionCell.swift; sourceTree = "<group>"; };
 		842C34342900008C00BF82D9 /* quiz-project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "quiz-project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		842C34372900008C00BF82D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		842C343B2900008C00BF82D9 /* GameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVC.swift; sourceTree = "<group>"; };
@@ -121,6 +125,8 @@
 				841375A529311FF600DFD016 /* CategoryCell.swift */,
 				841375A72931201800DFD016 /* GameModeCell.swift */,
 				841375A92931202A00DFD016 /* StartGameButtonCell.swift */,
+				841375AB2931208000DFD016 /* CategoryCollectionCell.swift */,
+				841375AD2931209600DFD016 /* GameModeCollectionCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -364,9 +370,11 @@
 				840D47062905568400550EBD /* QuestionImageCell.swift in Sources */,
 				8456DC06290F0CDA00C49AAE /* ScreenFactory.swift in Sources */,
 				841375AA2931202A00DFD016 /* StartGameButtonCell.swift in Sources */,
+				841375AE2931209600DFD016 /* GameModeCollectionCell.swift in Sources */,
 				843B267D292C03F40082C6EA /* UIView+hide.swift in Sources */,
 				840D4708290556B700550EBD /* QuestionsProvider.swift in Sources */,
 				842C34382900008C00BF82D9 /* AppDelegate.swift in Sources */,
+				841375AC2931208000DFD016 /* CategoryCollectionCell.swift in Sources */,
 				840D47042905565100550EBD /* QuestionNumberHeader.swift in Sources */,
 				842C345B2900063E00BF82D9 /* QuestionTextCell.swift in Sources */,
 				842C34502900037400BF82D9 /* QuestionsResponse.swift in Sources */,
