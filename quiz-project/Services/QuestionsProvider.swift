@@ -13,6 +13,7 @@ protocol QuestionsProvider {
     var allQuestions: [Question] { get set } //все вопросы - 10
     var questions: [Question] { get set } //текущий список вопросов
     var currentQuestion: Question? { get set }
+    var correctQuestionIds: Array<Int> { get set }
     var checkButtonState: CheckButtonState { get set }
     
     var answerIsChecked: (Bool, Int) { get }
@@ -35,7 +36,16 @@ class QuestionsProviderImpl: QuestionsProvider {
     var checkButtonState: CheckButtonState = .next
     var numberOfCorrectQuestions = 0 //счетчик правильных ответов
     
-    //Computed property
+    var correctQuestionIds: [Int] {
+        get {
+            let array = UserDefaults.standard.array(forKey: "correctQuestionIds") as? [Int] ?? []
+            return array
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "correctQuestionIds")
+        }
+    }
+   
     var canTapAnswer: Bool {
         let (_, selectedCount) = answerIsChecked // количество выбранных
         let type = currentQuestion?.type ?? "" //тип вопроса
