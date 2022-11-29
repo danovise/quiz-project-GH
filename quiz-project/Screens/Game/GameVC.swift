@@ -183,15 +183,38 @@ extension GameVC: CheckButtonCellDelegate {
     func countCorrectQuestion() {
         var isCorrect = true
         let answers = provider.currentQuestion?.answers ?? []
+
         for answer in answers {
-            
             if answer.isCorrect != answer.isSelected {
                 isCorrect = false
+
+                if let correctId = provider.currentQuestion?.id {
+  
+                    var ids = provider.correctQuestionIds
+     
+                    let uncorrectId = provider.currentQuestion?.id ?? 0
+                    if let indexToRemove = ids.firstIndex(where: { $0 == uncorrectId }) {
+                        ids.remove(at: indexToRemove)
+                    }
+    
+                    provider.correctQuestionIds = ids
+                }
             }
         }
         
         if isCorrect == true {
             provider.numberOfCorrectQuestions += 1
+            
+            if let correctId = provider.currentQuestion?.id {
+                
+                var ids = provider.correctQuestionIds
+               
+                let correctId = provider.currentQuestion?.id ?? 0
+     
+                ids.append(correctId)
+       
+                provider.correctQuestionIds = Array(Set(ids))
+            }
         }
     }
     
@@ -215,10 +238,12 @@ extension GameVC: CheckButtonCellDelegate {
             
             if question == nil {
                 
-                let alertController = UIAlertController(title: "Поздравляю!", message: "Отвечено правильно \(provider.numberOfCorrectQuestions) вопросов из \(provider.allQuestions.count) вопросов", preferredStyle: .alert)
+                let alertController = UIAlertController(title: "Поздравляю!", message: "Отвечено правильно \(provider.numberOfCorrectQuestions) вопросов из \(provider.questions.count) вопросов \n Общий балл -> \(provider.correctQuestionIds.count)", preferredStyle: .alert)
+                
+                let okAction = UIAlertAction(title: "Ok", style: .default)
+                alertController.addAction(okAction)
                 
                 self.present(alertController, animated: true, completion: nil)
-                
             }
         }
         tableView.reloadData()
