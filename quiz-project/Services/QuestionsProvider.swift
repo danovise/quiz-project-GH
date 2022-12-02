@@ -124,7 +124,7 @@ class QuestionsProviderImpl: QuestionsProvider {
     }
     
     func shuffleQuestions() {
-        
+        allQuestions.shuffle()
     }
 }
 //MARK: - DataSnapshot
