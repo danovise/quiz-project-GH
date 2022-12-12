@@ -41,6 +41,8 @@
 		8456DC06290F0CDA00C49AAE /* ScreenFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456DC05290F0CDA00C49AAE /* ScreenFactory.swift */; };
 		8456DC09290F0D0C00C49AAE /* AuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456DC08290F0D0C00C49AAE /* AuthVC.swift */; };
 		8456DC3429105CF100C49AAE /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456DC3329105CF100C49AAE /* SignInVC.swift */; };
+		8463F57C2944EF6100E7240D /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8463F57B2944EF6100E7240D /* Category.swift */; };
+		8463F57E2944EFC400E7240D /* UIScreen+sizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8463F57D2944EFC400E7240D /* UIScreen+sizes.swift */; };
 		846B77F52933C3420048A082 /* PersonalScoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846B77F42933C3420048A082 /* PersonalScoreVC.swift */; };
 		846B77F72933C3510048A082 /* ScoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846B77F62933C3510048A082 /* ScoreCell.swift */; };
 		84E649FB29127A9E00806959 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 84E649FA29127A9E00806959 /* SDWebImage */; };
@@ -91,6 +93,8 @@
 		8456DC05290F0CDA00C49AAE /* ScreenFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenFactory.swift; sourceTree = "<group>"; };
 		8456DC08290F0D0C00C49AAE /* AuthVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthVC.swift; sourceTree = "<group>"; };
 		8456DC3329105CF100C49AAE /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
+		8463F57B2944EF6100E7240D /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		8463F57D2944EFC400E7240D /* UIScreen+sizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+sizes.swift"; sourceTree = "<group>"; };
 		846B77F42933C3420048A082 /* PersonalScoreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalScoreVC.swift; sourceTree = "<group>"; };
 		846B77F62933C3510048A082 /* ScoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCell.swift; sourceTree = "<group>"; };
 		84F974EF29127F300003EB32 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -206,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				842C344F2900037400BF82D9 /* QuestionsResponse.swift */,
+				8463F57B2944EF6100E7240D /* Category.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -267,6 +272,7 @@
 				843B267A292C03F30082C6EA /* UIView+hide.swift */,
 				843B267B292C03F40082C6EA /* UIView+loadNib.swift */,
 				843B2679292C03F30082C6EA /* UIVIew+PinEdges.swift */,
+				8463F57D2944EFC400E7240D /* UIScreen+sizes.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -395,6 +401,7 @@
 				841375AE2931209600DFD016 /* GameModeCollectionCell.swift in Sources */,
 				843B267D292C03F40082C6EA /* UIView+hide.swift in Sources */,
 				840D4708290556B700550EBD /* QuestionsProvider.swift in Sources */,
+				8463F57C2944EF6100E7240D /* Category.swift in Sources */,
 				842C34382900008C00BF82D9 /* AppDelegate.swift in Sources */,
 				841375AC2931208000DFD016 /* CategoryCollectionCell.swift in Sources */,
 				840D47042905565100550EBD /* QuestionNumberHeader.swift in Sources */,
@@ -402,6 +409,7 @@
 				842C34502900037400BF82D9 /* QuestionsResponse.swift in Sources */,
 				843B267C292C03F40082C6EA /* UIVIew+PinEdges.swift in Sources */,
 				842C345F2900065D00BF82D9 /* CheckButtonCell.swift in Sources */,
+				8463F57E2944EFC400E7240D /* UIScreen+sizes.swift in Sources */,
 				843B267E292C03F40082C6EA /* UIView+loadNib.swift in Sources */,
 				8456DC3429105CF100C49AAE /* SignInVC.swift in Sources */,
 				840D471C290BEE1600550EBD /* FastGameVC.swift in Sources */,
