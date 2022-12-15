@@ -14,6 +14,7 @@ protocol QuestionsProvider {
     var questions: [Question] { get set } //текущий список вопросов
     var currentQuestion: Question? { get set }
     var correctQuestionIds: Array<Int> { get set }
+    var activeQuestions: [Question] { get set }
     var checkButtonState: CheckButtonState { get set }
     
     var answerIsChecked: (Bool, Int) { get }
@@ -30,11 +31,18 @@ protocol QuestionsProvider {
 
 class QuestionsProviderImpl: QuestionsProvider {
     
+    private init() {}
+    
+    static let shared = QuestionsProviderImpl()
+    
     var allQuestions: [Question] = []
     var questions: [Question] = []
+    var activeQuestions: [Question] = []
     var currentQuestion: Question? = nil
     var checkButtonState: CheckButtonState = .next
     var numberOfCorrectQuestions = 0 //счетчик правильных ответов
+    
+    var jsonService = JsonServiceImpl()
     
     var correctQuestionIds: [Int] {
         get {
@@ -78,17 +86,37 @@ class QuestionsProviderImpl: QuestionsProvider {
         return (isSelected, selectedCount)
     }
     
-    var jsonService: JsonService
-    
-    init(jsonService: JsonService) {
-        self.jsonService = jsonService
-    }
-    
     func fetchAllLocalQuestions() {
         if let questions = jsonService.loadJson(filename: "questions") {
             allQuestions = questions //список всех вопросов
             self.questions = questions //список активных вопросов
         }
+    }
+    
+    
+    func fetchQuestion(by category: Category, completion: @escaping ()->()) {
+        questions = allQuestions.filter { $0.category == category.name }
+        activeQuestions = questions
+        completion()
+    }
+    
+    func fetchAllCategories() -> [Category] {
+        
+        //30 -> 4 категории (Set)
+        var categories: Set<String> = []
+        for question in allQuestions {
+            categories.insert(question.category)
+        }
+        
+        let sortedCategories = categories.sorted()
+        
+        var result: [Category] = []
+        for categoryName in sortedCategories {
+            let object = Category.init(name: categoryName)
+            result.append(object)
+        }
+        
+        return result
     }
     
     func fetchAllQuestions(completion: @escaping ()->()) {
@@ -101,12 +129,9 @@ class QuestionsProviderImpl: QuestionsProvider {
                 return
             }
             
-         //   print(snapshot)
-            
             let objects: [Question] = children.compactMap { snapshot in
 
                 return try? JSONDecoder().decode(Question.self, from: snapshot.data!)
-
             }
 
             self.allQuestions = objects //список всех вопросов
