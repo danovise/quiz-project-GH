@@ -219,4 +219,5 @@ class AuthVC: UIViewController {
             print(error.localizedDescription)
         }
     }
+    
 }
