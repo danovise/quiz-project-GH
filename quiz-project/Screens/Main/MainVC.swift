@@ -47,7 +47,8 @@ final class MainVC: UIViewController {
         setupConstraints()
         
         questionProvider.fetchAllQuestions {
-        
+            
+            self.questionProvider.shuffleQuestions()
             self.categories = self.questionProvider.fetchAllCategories()
             self.tableView.reloadData()
             
@@ -56,11 +57,10 @@ final class MainVC: UIViewController {
     }
         
     // MARK: - Private
-    
     private func setupViews() {
         view.addSubview(tableView)
-        navigationItem.hidesBackButton = true
         view.addSubview(zeroView)
+        navigationItem.hidesBackButton = true
     }
     
     private func setupConstraints() {
@@ -68,21 +68,25 @@ final class MainVC: UIViewController {
             $0.edges.equalToSuperview()
         }
         
-        zeroView.pinEdgesToSuperView()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            self.zeroView.hide()
+        zeroView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
+        
+//        zeroView.pinEdgesToSuperView()
+//
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+//            self.zeroView.hide()
+//        }
     }
     
-    // MARK: - Navigation
+// MARK: - Navigation
     
     func showStandardGameScreen() {
         let gameVC = ScreenFactoryImpl().makeStandardGameScreen()
         self.navigationController?.pushViewController(gameVC, animated: true)
     }
 }
-
+// MARK: - UITableViewDataSource
 extension MainVC: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -125,7 +129,7 @@ extension MainVC: UITableViewDataSource {
         return UITableViewCell()
     }
 }
-
+// MARK: - UITableViewDelegate
 extension MainVC: UITableViewDelegate {
         
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -159,14 +163,14 @@ extension MainVC: UITableViewDelegate {
        return CGFloat(100)
     }
 }
-
+// MARK: - StartGameButtonCellOutput
 extension MainVC: StartGameButtonCellOutput {
     
     func startGameButtonCellDidSelect() {
         showStandardGameScreen()
     }
 }
-
+// MARK: - CategoryCellOutput
 extension MainVC: CategoryCellOutput {
     
     func categoryCellDidSelect(_ category: Category) {
