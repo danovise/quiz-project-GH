@@ -65,25 +65,22 @@ class GameVC: UIViewController {
     //MARK: - Request
     private func fetchQuestions() {
         
-        provider.fetchAllQuestions { [self] in
-            
-            let (_, number, count) = self.provider.nextQuestion() //(question, number, count)
-            
-            self.questionNumberHeader.configure(currentQuestion: number, numberOfQuestions: count)
-            self.tableView.reloadData()
-        }
+        let (_, number, count) = self.provider.nextQuestion()
+        questionNumberHeader.configure(currentQuestion: number, numberOfQuestions: count)
+        tableView.reloadData()
     }
     
     //MARK: - Private
-    private func setupViews() {
-        view.addSubview(tableView)
+private func setupViews() {
+    navigationController?.isNavigationBarHidden = true
+    view.addSubview(tableView)
+}
+
+private func setupConstraints() {
+    tableView.snp.makeConstraints { make in
+        make.edges.equalToSuperview()
     }
-    
-    private func setupConstraints() {
-        tableView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-    }
+}
 }
 //MARK: - UITableViewDataSource
 extension GameVC: UITableViewDataSource {
@@ -123,15 +120,14 @@ extension GameVC: UITableViewDataSource {
                     case .image:
                         
                         guard let cell = tableView.dequeueReusableCell(withIdentifier: QuestionImageCell.reuseId, for: indexPath) as? QuestionImageCell else { return UITableViewCell() }
+                        
                         cell.configure(provider.currentQuestion)
                         return cell
                     }
                 }
                 
             case .answer:
-                
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: AnswerCell.reuseId, for: indexPath) as? AnswerCell else { return UITableViewCell() }
-                
                 let answer = provider.currentQuestion?.answers[indexPath.row]
                 
                 cell.configure(answer, buttonState: provider.checkButtonState, answerIsCorrect: provider.answerIsCorrect, canTapAnswer: provider.canTapAnswer)
@@ -150,7 +146,6 @@ extension GameVC: UITableViewDataSource {
         }
         return UITableViewCell()
     }
-    
 }
 //MARK: - UITableViewDelegate
 extension GameVC: UITableViewDelegate {
@@ -231,19 +226,12 @@ extension GameVC: CheckButtonCellDelegate {
                       
         case .next:
 
-            //Переход на следующий вопрос
             let (question, number, count) = provider.nextQuestion()
             questionNumberHeader.configure(currentQuestion: number, numberOfQuestions: count)
-           // provider.answerIsChecked = false
-            
+
             if question == nil {
                 
-                let alertController = UIAlertController(title: "Поздравляю!", message: "Отвечено правильно \(provider.numberOfCorrectQuestions) вопросов из \(provider.questions.count) вопросов \n Общий балл -> \(provider.correctQuestionIds.count)", preferredStyle: .alert)
-                
-                let okAction = UIAlertAction(title: "Ok", style: .default)
-                alertController.addAction(okAction)
-                
-                self.present(alertController, animated: true, completion: nil)
+                showPersonalScoreScreen()
             }
         }
         tableView.reloadData()
@@ -253,9 +241,32 @@ extension GameVC: CheckButtonCellDelegate {
 extension GameVC: AnswerCellDelegate {
     
     func answerCellSelectAnswer() {
-        
-      //  provider.answerIsChecked = true
         tableView.reloadData()
         
+    }
+}
+//MARK: - Navigation
+extension GameVC {
+    
+    func showPersonalScoreScreen() {
+        
+        let category = provider.questions.first?.category ?? ""
+        
+        let progress: Float = Float(provider.numberOfCorrectQuestions) / Float(provider.questions.count)
+        
+        let correctAnswers: Float = Float(provider.numberOfCorrectQuestions)
+        
+        let allQuestions: Float = Float(provider.questions.count)
+        
+        let percent: String = "\(Int(progress * 100))%"
+        
+        
+        let scoreModel = Score.init(category: category, progress: progress, correctAnswers: correctAnswers, allQuestion: allQuestions, percent: percent, correctQuestionIds: provider.correctQuestionIds)
+        
+        let personalScoreVC = PersonalScoreVC.init(model: scoreModel)
+        navigationController?.pushViewController(personalScoreVC, animated: true)
+    }
+    func showGlobalScoreScreen() {
+        print(#function)
     }
 }
