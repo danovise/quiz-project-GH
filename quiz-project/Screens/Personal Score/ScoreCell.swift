@@ -52,7 +52,19 @@ final class ScoreCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+    //MARK: - Public
+    func configure(_ model: Score) {
+        categoryLabel.text = model.category
+        
+        let correct = Int(model.correctAnswers)
+        let all = Int(model.allQuestion)
+        
+        // "50% (5/10)"
+        scoreLabel.text = model.percent + " " + "(\(correct)/\(all))"
+        
+        scoreProgressView.progress = model.progress
+    }
+    //MARK: - Private
     private func setupView() {
         
         contentView.backgroundColor = .systemGray6
