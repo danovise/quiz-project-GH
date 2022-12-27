@@ -13,8 +13,8 @@ protocol QuestionsProvider {
     var allQuestions: [Question] { get set } //все вопросы - 10
     var questions: [Question] { get set } //текущий список вопросов
     var currentQuestion: Question? { get set }
+    var activeQuestions: [Question] { get set } //текущие активные вопросы
     var correctQuestionIds: Array<Int> { get set }
-    var activeQuestions: [Question] { get set }
     var checkButtonState: CheckButtonState { get set }
     
     var answerIsChecked: (Bool, Int) { get }
@@ -53,7 +53,7 @@ class QuestionsProviderImpl: QuestionsProvider {
             UserDefaults.standard.set(newValue, forKey: "correctQuestionIds")
         }
     }
-   
+
     var canTapAnswer: Bool {
         let (_, selectedCount) = answerIsChecked // количество выбранных
         let type = currentQuestion?.type ?? "" //тип вопроса
@@ -85,14 +85,13 @@ class QuestionsProviderImpl: QuestionsProvider {
         }
         return (isSelected, selectedCount)
     }
-    
+
     func fetchAllLocalQuestions() {
         if let questions = jsonService.loadJson(filename: "questions") {
             allQuestions = questions //список всех вопросов
             self.questions = questions //список активных вопросов
         }
     }
-    
     
     func fetchQuestion(by category: Category, completion: @escaping ()->()) {
         questions = allQuestions.filter { $0.category == category.name }
@@ -101,8 +100,7 @@ class QuestionsProviderImpl: QuestionsProvider {
     }
     
     func fetchAllCategories() -> [Category] {
-        
-        //30 -> 4 категории (Set)
+
         var categories: Set<String> = []
         for question in allQuestions {
             categories.insert(question.category)
@@ -132,6 +130,7 @@ class QuestionsProviderImpl: QuestionsProvider {
             let objects: [Question] = children.compactMap { snapshot in
 
                 return try? JSONDecoder().decode(Question.self, from: snapshot.data!)
+
             }
 
             self.allQuestions = objects //список всех вопросов
@@ -141,11 +140,12 @@ class QuestionsProviderImpl: QuestionsProvider {
         }
     }
     
-    func nextQuestion() -> (Question?, Int, Int) { //question, number, count
-        currentQuestion = questions.first
-        self.questions = Array(questions.dropFirst())
+    func nextQuestion() -> (Question?, Int, Int) {
         
-        return (currentQuestion, allQuestions.count - questions.count, allQuestions.count)
+        currentQuestion = activeQuestions.first
+        self.activeQuestions = Array(activeQuestions.dropFirst())
+        
+        return (currentQuestion, questions.count - activeQuestions.count, questions.count)
     }
     
     func shuffleQuestions() {
